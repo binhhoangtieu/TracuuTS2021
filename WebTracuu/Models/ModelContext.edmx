@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tracuuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ThongTin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nganh" Type="nvarchar" MaxLength="255" />
+          <Property Name="To_hop_thi" Type="nvarchar(max)" />
+          <Property Name="Ma_nganh" Type="nvarchar" MaxLength="255" />
+          <Property Name="Chi_Tieu" Type="int" />
+          <Property Name="Tham_Gia_Doi_Tuyen" Type="nvarchar" MaxLength="255" />
+          <Property Name="To_Hop_XTT2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ghi_Chu" Type="nvarchar" MaxLength="255" />
+          <Property Name="Loai_XT" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ngoai_SP" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'tracuu.dbo.Nganh' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Nganh">
+          <Property Name="Nganh" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityContainer Name="tracuuModelStoreContainer">
+          <EntitySet Name="ThongTin" EntityType="Self.ThongTin" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tracuuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ThongTin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nganh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="To_hop_thi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_nganh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Chi_Tieu" Type="Int32" />
+          <Property Name="Tham_Gia_Doi_Tuyen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="To_Hop_XTT2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ghi_Chu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Loai_XT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ngoai_SP" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="tracuuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ThongTins" EntityType="Self.ThongTin" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tracuuModelStoreContainer" CdmEntityContainer="tracuuEntities">
+          <EntitySetMapping Name="ThongTins">
+            <EntityTypeMapping TypeName="tracuuModel.ThongTin">
+              <MappingFragment StoreEntitySet="ThongTin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nganh" ColumnName="Nganh" />
+                <ScalarProperty Name="To_hop_thi" ColumnName="To_hop_thi" />
+                <ScalarProperty Name="Ma_nganh" ColumnName="Ma_nganh" />
+                <ScalarProperty Name="Chi_Tieu" ColumnName="Chi_Tieu" />
+                <ScalarProperty Name="Tham_Gia_Doi_Tuyen" ColumnName="Tham_Gia_Doi_Tuyen" />
+                <ScalarProperty Name="To_Hop_XTT2" ColumnName="To_Hop_XTT2" />
+                <ScalarProperty Name="Ghi_Chu" ColumnName="Ghi_Chu" />
+                <ScalarProperty Name="Loai_XT" ColumnName="Loai_XT" />
+                <ScalarProperty Name="Ngoai_SP" ColumnName="Ngoai_SP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

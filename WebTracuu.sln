@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTracuu", "WebTracuu\WebTracuu.csproj", "{35EB0297-F3B4-49C5-9169-8602D4430E5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35EB0297-F3B4-49C5-9169-8602D4430E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35EB0297-F3B4-49C5-9169-8602D4430E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35EB0297-F3B4-49C5-9169-8602D4430E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35EB0297-F3B4-49C5-9169-8602D4430E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {989933D0-C877-47CC-81CB-56C79D4D8616}
+	EndGlobalSection
+EndGlobal

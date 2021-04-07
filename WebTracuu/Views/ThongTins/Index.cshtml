@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebTracuu.Models.ThongTin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @using (Html.BeginForm())
+    {
+        @*<div class="form-horizontal">
+                <div class="form-group">
+                    @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.Editor("KeyWord", new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>*@
+    }
+</p>
+<table class="table table-bordered table-responsive table-hover">
+
+    <tr>
+        <th>STT </th>
+        <th>Ngành </th>
+    </tr>
+    @{int index = 1;}
+    @foreach (var item in Model.Select(c => c.Nganh).Distinct().ToList())
+    {
+        <tr>
+            <td>  @index</td>
+            <td> @(item) </td>
+        </tr>
+        index++;
+    }
+
+</table>
