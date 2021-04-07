@@ -123,6 +123,12 @@ namespace WebTracuu.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ViewDetail(string cNganh)
+        {
+            // Modify your code base on your requirements. For example ,find files in directory base on id or name
+            return View(cNganh);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
