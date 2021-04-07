@@ -123,10 +123,11 @@ namespace WebTracuu.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewDetail(string cNganh)
+        public ActionResult ViewDetail(string nganh)
         {
             // Modify your code base on your requirements. For example ,find files in directory base on id or name
-            return View(cNganh);
+            ThongTin obj = db.ThongTins.Where(m => m.Nganh != null).Where(m => m.Nganh.Equals(nganh)).FirstOrDefault();
+            return View(obj);
         }
 
         protected override void Dispose(bool disposing)

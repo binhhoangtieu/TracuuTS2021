@@ -36,7 +36,7 @@
         <tr>
             <td>  @index</td>
             <td> @(item) </td>
-            <td> @Html.ActionLink("Chi tiết", "ViewDetail", new { id = item}) </td>
+            <td> @Html.ActionLink("Chi tiết", "ViewDetail", new { nganh = @item}) </td>
 </tr>
         index++;
     }
