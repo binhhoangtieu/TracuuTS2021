@@ -40,6 +40,7 @@ namespace WebTracuu.Controllers
         //LoaiXTList
         public ActionResult LoaiXTList(string KeyWord)
         {
+            ViewBag.MaXT = KeyWord;
             var list = db.ThongTins.ToList();
             if (KeyWord != null && KeyWord != "")
             {
