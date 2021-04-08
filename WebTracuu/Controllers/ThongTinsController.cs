@@ -159,7 +159,7 @@ namespace WebTracuu.Controllers
             List<ThongTin> objs = db.ThongTins.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Equals(LoaiXT)).ToList();
             return View(objs);
         }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
