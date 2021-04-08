@@ -27,7 +27,27 @@ namespace WebTracuu.Controllers
             return View(list);
                 
         }
+        public ActionResult ToHopList(string KeyWord)
+        {
+            var list = db.ThongTins.ToList();
+            if (KeyWord != null && KeyWord != "")
+            {
+                list = list.Where(m => m.To_hop_thi != null).Where(m=>m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
+            }
+            return View(list);
 
+        }
+        //LoaiXTList
+        public ActionResult LoaiXTList(string KeyWord)
+        {
+            var list = db.ThongTins.ToList();
+            if (KeyWord != null && KeyWord != "")
+            {
+                list = list.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Contains(KeyWord)).ToList();
+            }
+            return View(list);
+
+        }
         // GET: ThongTins/Details/5
         public ActionResult Details(int? id)
         {
@@ -126,8 +146,18 @@ namespace WebTracuu.Controllers
         public ActionResult ViewDetail(string nganh)
         {
             // Modify your code base on your requirements. For example ,find files in directory base on id or name
-            ThongTin obj = db.ThongTins.Where(m => m.Nganh != null).Where(m => m.Nganh.Equals(nganh)).FirstOrDefault();
-            return View(obj);
+            List<ThongTin> objs = db.ThongTins.Where(m => m.Nganh != null).Where(m => m.Nganh.Equals(nganh)).ToList();
+            return View(objs);
+        }
+        public ActionResult ViewToHopDetail(string Tohop)
+        {
+            List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m=>m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
+            return View(objs);
+        }
+        public ActionResult ViewLoaiXTDetail(string LoaiXT)
+        {
+            List<ThongTin> objs = db.ThongTins.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Equals(LoaiXT)).ToList();
+            return View(objs);
         }
 
         protected override void Dispose(bool disposing)

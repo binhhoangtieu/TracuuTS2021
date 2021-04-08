@@ -224,6 +224,10 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\ThongTins\ViewDetail.cshtml" />
+    <Content Include="Views\ThongTins\ToHopList.cshtml" />
+    <Content Include="Views\ThongTins\ViewToHopDetail.cshtml" />
+    <Content Include="Views\ThongTins\LoaiXTList.cshtml" />
+    <Content Include="Views\ThongTins\ViewLoaiXTDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -34,10 +34,9 @@
     @foreach (var item in Model.Select(c => c.Nganh).Distinct().ToList())
     {
         <tr>
-            <td>  @index</td>
-            <td> @(item) </td>
-            <td> @Html.ActionLink("Chi tiết", "ViewDetail", new { nganh = @item}) </td>
-</tr>
+            <td>  @index</td>            
+            <td> @Html.ActionLink(item==null?"_":@item, "ViewDetail", new { nganh = @item}) </td>
+        </tr>
         index++;
     }
 

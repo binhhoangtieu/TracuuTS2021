@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebTracuu.Models.ThongTin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-bordered table-responsive table-hover">
+
+    <tr>
+        <th>STT </th>
+        <th>Ngành </th>
+    </tr>
+    @{int index = 1;}
+    @foreach (var item in Model.Select(c => c.Loai_XT).Distinct().ToList())
+    {
+        <tr>
+            <td>  @index</td>
+            <td> @Html.ActionLink(@item == null ? "_" : item, "ViewLoaiXTDetail", new { LoaiXT = @item }) </td>
+        </tr>
+        index++;
+    }
+
+</table>
