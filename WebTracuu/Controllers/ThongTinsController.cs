@@ -29,10 +29,10 @@ namespace WebTracuu.Controllers
         }
         public ActionResult ToHopList(string KeyWord)
         {
-            var list = db.ThongTins.ToList();
+            var list = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).ToList();
             if (KeyWord != null && KeyWord != "")
             {
-                list = list.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
+                list = list.Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
             }
             return View(list);
 
