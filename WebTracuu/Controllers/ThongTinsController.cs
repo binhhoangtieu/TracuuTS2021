@@ -38,13 +38,13 @@ namespace WebTracuu.Controllers
 
         }
         //LoaiXTList
-        public ActionResult LoaiXTList(string KeyWord)
+        public ActionResult LoaiXTList(string LoaiXT)
         {
-            ViewBag.MaXT = KeyWord;
+            
             var list = db.ThongTins.ToList();
-            if (KeyWord != null && KeyWord != "")
+            if (LoaiXT != null && LoaiXT != "")
             {
-                list = list.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Contains(KeyWord)).ToList();
+                list = list.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Contains(LoaiXT)).ToList();
             }
             return View(list);
 
@@ -168,6 +168,7 @@ namespace WebTracuu.Controllers
         }
         public ActionResult ViewLoaiXTDetail(string LoaiXT)
         {
+            ViewBag.MaXT = LoaiXT;
             List<ThongTin> objs = db.ThongTins.Where(m => m.Loai_XT != null).Where(m => m.Loai_XT.Equals(LoaiXT)).ToList();
             return View(objs);
         }

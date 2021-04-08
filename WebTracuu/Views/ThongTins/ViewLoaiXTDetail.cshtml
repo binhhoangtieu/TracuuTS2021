@@ -6,7 +6,7 @@
 }
 
 <table border="1">
-    @if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT3")
+    @if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
     {
         int index = 1;
         <tr>
@@ -29,7 +29,7 @@
 
                 <td>@item.Chi_Tieu</td>
             </tr>
-
+            index++;
         }
     }
     else
