@@ -146,6 +146,7 @@ namespace WebTracuu.Controllers
         public ActionResult ViewDetail(string nganh)
         {
             // Modify your code base on your requirements. For example ,find files in directory base on id or name
+            ViewBag.Nganh = nganh;
             List<ThongTin> objs = db.ThongTins.Where(m => m.Nganh != null).Where(m => m.Nganh.Equals(nganh)).ToList();
             return View(objs);
         }
