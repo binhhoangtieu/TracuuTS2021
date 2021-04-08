@@ -229,6 +229,7 @@
     <Content Include="Views\ThongTins\LoaiXTList.cshtml" />
     <Content Include="Views\ThongTins\ViewLoaiXTDetail.cshtml" />
     <Content Include="Views\ThongTins\Thongtinchung.cshtml" />
+    <Content Include="Views\ThongTins\Maudangky.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
