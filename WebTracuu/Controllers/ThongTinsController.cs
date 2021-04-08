@@ -22,17 +22,17 @@ namespace WebTracuu.Controllers
             var list = db.ThongTins.ToList();
             if (KeyWord != null && KeyWord != "")
             {
-                list = list.Where(m=>m.Ma_nganh !=null).Where(m => m.Ma_nganh.Contains(KeyWord)).ToList();                
-            }            
+                list = list.Where(m => m.Ma_nganh != null).Where(m => m.Ma_nganh.Contains(KeyWord)).ToList();
+            }
             return View(list);
-                
+
         }
         public ActionResult ToHopList(string KeyWord)
         {
             var list = db.ThongTins.ToList();
             if (KeyWord != null && KeyWord != "")
             {
-                list = list.Where(m => m.To_hop_thi != null).Where(m=>m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
+                list = list.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
             }
             return View(list);
 
@@ -149,9 +149,16 @@ namespace WebTracuu.Controllers
             List<ThongTin> objs = db.ThongTins.Where(m => m.Nganh != null).Where(m => m.Nganh.Equals(nganh)).ToList();
             return View(objs);
         }
+
+        public ActionResult Thongtinchung()
+        {
+            return View("Thongtinchung");
+        }
+
+
         public ActionResult ViewToHopDetail(string Tohop)
         {
-            List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m=>m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
+            List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
             return View(objs);
         }
         public ActionResult ViewLoaiXTDetail(string LoaiXT)
