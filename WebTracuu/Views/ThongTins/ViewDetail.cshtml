@@ -5,16 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Ngành xét tuyển: </h2>
 <table border="1">
+
+    <tr>
+        <th>STT </th>
+        <th>Mã tổ hợp xét tuyển</th>
+        <th>Tổ hợp thi</th>
+        <th>Chỉ tiêu</th>
+        <th>Hình thức xét tuyển</th>
+    </tr>
     @{int index = 1;}
     @foreach (var item in Model)
     {
         <tr>
-            <td>  @index</td>
+            <td> @index</td>
             <td> @item.Ma_nganh </td>
-            <td>@item.Nganh</td>
-            <td>@item.To_hop_thi</td>
-            <td>@item.Chi_Tieu</td>
+            @if  (item.To_hop_thi == null)
+                {
+                <td>  </td>
+            }
+            else
+            { 
+                <td> @Html.ActionLink(@item.To_hop_thi == null ? "_":item.To_hop_thi , "ViewToHopDetail", new {Tohop = item.To_hop_thi })</td>
+            }
+            <td> @item.Chi_Tieu</td>
+            <td> @item.Loai_XT</td>
         </tr>
         index++;
     }

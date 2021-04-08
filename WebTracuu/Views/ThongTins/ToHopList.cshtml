@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-bordered table-responsive table-hover">
+<table border="1">
 
     <tr>
         <th>STT </th>
@@ -15,7 +15,7 @@
     @foreach (var item in Model.Select(c => c.To_hop_thi).Distinct().ToList())
     {
         <tr>
-            <td>  @index</td>            
+            <td>  @index</td>        
             <td> @Html.ActionLink(@item==null?"_":item, "ViewToHopDetail", new { Tohop = @item }) </td>
         </tr>
         index++;
