@@ -156,7 +156,10 @@ namespace WebTracuu.Controllers
             return View("Thongtinchung");
         }
 
-
+        public ActionResult Maudangky()
+        {
+            return View("Maudangky");
+        }
         public ActionResult ViewToHopDetail(string Tohop)
         {
             List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
