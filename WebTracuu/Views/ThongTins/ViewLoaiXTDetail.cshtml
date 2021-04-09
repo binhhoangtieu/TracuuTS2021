@@ -42,7 +42,7 @@
             <th>Tổ hợp thi</th>
             <th>Chỉ tiêu</th>
         </tr>
-        
+
         foreach (var item in Model)
         {
             <tr>
@@ -50,12 +50,15 @@
                 <td>@item.Ma_nganh </td>
                 <td>@item.Nganh</td>
                 <td>
-                    @item.To_hop_thi                    
+                    @item.To_hop_thi
                 </td>
                 <td>@item.Chi_Tieu</td>
             </tr>
             index++;
         }
     }
-
 </table>
+@if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
+{ 
+<h4><i>Lưu ý:</i></h4>
+}
