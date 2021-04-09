@@ -24,21 +24,19 @@
             </div>*@
     }
 </p>
-<table class="table table-bordered table-responsive table-hover">
+<table border="1">
 
     <tr>
         <th>STT </th>
         <th>Ngành </th>
-        <th>Chỉ tiêu </th>
     </tr>
     @{int index = 1;}
     @foreach (var item in Model)
     {
-    <tr>
-        <td>  @index</td>
-        <td> @Html.ActionLink(@item.Nganh, "ViewDetail", new { nganh = @item }) </td>
-        <td> @item.ChiTieu </td>
-    </tr>
+        <tr>
+            <td>  @index</td>            
+            <td> @Html.ActionLink(item==null?"_":@item, "ViewDetail", new { nganh = @item}) </td>
+        </tr>
         index++;
     }
 
