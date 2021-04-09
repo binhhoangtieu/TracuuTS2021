@@ -19,7 +19,7 @@
         <tr>
             <td>  @index</td>
             <td> @item.Ma_nganh </td>
-            <td>@item.Nganh</td>
+            <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
             <td>@item.To_hop_thi</td>
             <td  style="text-align:center;">@item.Chi_Tieu</td>
         </tr>
