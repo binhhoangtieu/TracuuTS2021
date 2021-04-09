@@ -34,45 +34,47 @@
             <th>Tham gia đội tuyển</th>
             <th>Tổ hợp Xét tuyển</th>
             <th>Chỉ tiêu dự kiến</th>
+            <th>Ghi chú</th>
         </tr>
 
         foreach (var item in Model)
         {
-            <tr>
-                <td>@index</td>
-                <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
-                <td>@item.Tham_Gia_Doi_Tuyen</td>
-                <td>
-                    @item.To_Hop_XTT2
-                </td>
-
-                <td style="text-align:center;">@item.Chi_Tieu</td>
-            </tr>
+<tr>
+    <td>@index</td>
+    <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
+    <td>@item.Tham_Gia_Doi_Tuyen</td>
+    <td>
+        @item.To_Hop_XTT2
+    </td>
+    <td style="text-align:center;">@item.Chi_Tieu</td>
+    <td>@item.Ghi_Chu</td>
+</tr>
             index++;
         }
     }
     else
     {
         int index = 1;
-        <tr>
-            <th>STT </th>
-            <th>Mã tổ hợp</th>
-            <th>Ngành xét tuyển</th>
-            <th>Tổ hợp thi</th>
-            <th>Chỉ tiêu dự kiến</th>
-        </tr>
+<tr>
+    <th>STT </th>
+    <th>Mã tổ hợp</th>
+    <th>Ngành xét tuyển</th>
+    <th>Tổ hợp thi</th>
+    <th>Chỉ tiêu dự kiến</th>
+</tr>
 
         foreach (var item in Model)
         {
-            <tr>
-                <td>@index</td>
-                <td>@item.Ma_nganh </td>
-                <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
-                <td>
-                    @Html.ActionLink(@item.To_hop_thi == null ? "_" : @item.To_hop_thi, "ViewToHopDetail", new { Tohop = @item.To_hop_thi })
-                </td>
-                <td style="text-align:center;"> @item.Chi_Tieu</td>
-            </tr>
+<tr>
+    <td>@index</td>
+    <td>@item.Ma_nganh </td>
+    <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
+    <td>
+        @Html.ActionLink(@item.To_hop_thi == null ? "_" : @item.To_hop_thi, "ViewToHopDetail", new { Tohop = @item.To_hop_thi })
+    </td>
+
+<td style="text-align:center;"> @item.Chi_Tieu</td>
+</tr>
             index++;
         }
     }
@@ -98,7 +100,7 @@
         <i>Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.</i><br>
         <b>Thời gian nộp hồ sơ và công bố kết quả xét tuyển thẳng:</b><br>
         -Nộp hồ sơ từ ngày 21 / 6 / 2021 đến hết ngày 05 / 7 / 2021(trong giờ hành chính, trừ ngày thứ 7, Chủ nhật và ngày lễ) <br>
-        - Công bố kết quả: ngày 20 / 07 / 2021.(Công bố trên website hnue.edu.vn) < br >
+        - Công bố kết quả: ngày 20 / 07 / 2021.(Công bố trên website hnue.edu.vn) <br>
         Nộp các giấy tờ xác nhận thí sinh sẽ học tại trường: từ ngày 04 / 8 / 2021 đến hết ngày 09 / 8 / 2021.Sau thời gian này nếu thí sinh không nộp đủ các giấy tờ theo quy định, Nhà trường coi như thí sinh không có nguyện vọng học tại trường và sẽ xóa tên khỏi danh sách trúng tuyển.<br>
         *.Lệ phí xét tuyển thẳng: 25.000đ / 01 hồ sơ./.
     </p>

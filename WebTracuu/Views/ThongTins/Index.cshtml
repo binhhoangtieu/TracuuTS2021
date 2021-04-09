@@ -24,19 +24,21 @@
             </div>*@
     }
 </p>
-<table class="table table-bordered table-responsive table-hover">
+<table border="1">
 
     <tr>
         <th>STT </th>
         <th>Ngành </th>
+        @*<th>Ngoài sư phạm</th>*@
     </tr>
     @{int index = 1;}
     @foreach (var item in Model.Select(c => c.Nganh).Distinct().ToList())
     {
-        <tr>
-            <td>  @index</td>            
-            <td> @Html.ActionLink(item==null?"_":@item, "ViewDetail", new { nganh = @item}) </td>
-        </tr>
+<tr>
+    <td> @index</td>
+    <td> @Html.ActionLink(item == null ? "_" : @item, "ViewDetail", new { nganh = @item }) </td>
+    
+</tr>
         index++;
     }
 
