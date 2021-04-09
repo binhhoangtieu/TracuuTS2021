@@ -27,11 +27,16 @@ namespace WebTracuu.Controllers
             }
 
             var listNganh = from b in list
-                           group b by b.Nganh into g
+                           group b by new
+                           {
+                               b.Nganh,
+                               b.Ngoai_SP,
+                           } into g
                            let ChiTieu = g.Sum(w => w.Chi_Tieu)
                            select new Nganh_Chitieu
                            {
-                               Nganh = g.Key,
+                               Nganh = g.Key.Nganh,
+                               Ngoai_SP = (int)g.Key.Ngoai_SP,
                                ChiTieu = ChiTieu.Value
                            };
 
