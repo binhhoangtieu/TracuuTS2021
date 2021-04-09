@@ -4,7 +4,26 @@
     ViewBag.Title = "ViewDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (ViewBag.MaXT == "THPT")
+{
+    <h3>Các ngành xét tuyển bằng điểm thi TN THPT</h3>
+}
+@if (ViewBag.MaXT == "XTT2")
+{
+    <h3>Các ngành xét tuyển thẳng 2</h3>
+}
+@if (ViewBag.MaXT == "NKPT")
+{
+    <h3>Các ngành xét tuyển kết hợp điểm thi năng khiếu và điểm thi TN THPT</h3>
+}
+@if (ViewBag.MaXT == "THINK")
+{
+    <h3>Các ngành xét tuyển bằng điểm thi năng khiếu</h3>
+}
+@if (ViewBag.MaXT == "XTT23")
+{
+    <h3>Các ngành xét tuyển thẳng 2 và 3</h3>
+}
 <table border="1">
     @if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
     {
@@ -14,7 +33,7 @@
             <th>Ngành xét tuyển</th>
             <th>Tham gia đội tuyển</th>
             <th>Tổ hợp Xét tuyển</th>
-            <th>Ghi chú</th>
+            <th>Chỉ tiêu dự kiến</th>
         </tr>
 
         foreach (var item in Model)
@@ -27,7 +46,7 @@
                     @item.To_Hop_XTT2
                 </td>
 
-                <td>@item.Chi_Tieu</td>
+                <td  style="text-align:center;">@item.Chi_Tieu</td>
             </tr>
             index++;
         }
@@ -40,7 +59,7 @@
             <th>Mã tổ hợp</th>
             <th>Ngành xét tuyển</th>
             <th>Tổ hợp thi</th>
-            <th>Chỉ tiêu</th>
+            <th>Chỉ tiêu dự kiến</th>
         </tr>
 
         foreach (var item in Model)
@@ -48,17 +67,38 @@
             <tr>
                 <td>@index</td>
                 <td>@item.Ma_nganh </td>
-                <td>@item.Nganh</td>
+                <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
                 <td>
                     @item.To_hop_thi
                 </td>
-                <td>@item.Chi_Tieu</td>
+                <td style="text-align:center;"> @item.Chi_Tieu</td>
             </tr>
             index++;
         }
     }
 </table>
+<br>
 @if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
-{ 
-<h4><i>Lưu ý:</i></h4>
+{
+<p>
+    <b>Quy định về hồ sơ đăng ký xét tuyển:</b><br>
+    -	Phiếu đăng ký xét tuyển (theo mẫu quy định của trường- mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
+    -	Bản sao công chứng học bạ THPT.<br>
+    -	Bản sao công chứng giấy chứng nhận đạt giải học sinh giỏi tỉnh/thành phố (nếu có).<br>
+    -	Bản sao công chứng chứng chỉ ngoại ngữ hoặc Tin học: đối với các ngành xét tuyển sử dụng chứng chỉ Quốc tế<br>
+    -	Biên lai nộp tiền (bản photo) hoặc xác nhận chuyển tiền.<br>
+    Chú ý: Thí sinh chỉ được đăng ký xét tuyển thẳng vào 1 ngành.<br>
+    <b>Hình thức đăng ký xét tuyển:</b><br>
+    + Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P. 211-Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội<br>
+    + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
+    Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội <br>
+    Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
+    Nội dung nộp tiền: <b>XTT2021 - Họ và tên thí sinh - Mã ngành - Số điện thoại của thí sinh</b><br>
+    <i>Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.</i><br>
+    <b>Thời gian nộp hồ sơ và công bố kết quả xét tuyển thẳng:</b><br>
+    -Nộp hồ sơ từ ngày 21 / 6 / 2021 đến hết ngày 05 / 7 / 2021(trong giờ hành chính, trừ ngày thứ 7, Chủ nhật và ngày lễ) <br>
+    - Công bố kết quả: ngày 20 / 07 / 2021.(Công bố trên website hnue.edu.vn) < br >
+    Nộp các giấy tờ xác nhận thí sinh sẽ học tại trường: từ ngày 04 / 8 / 2021 đến hết ngày 09 / 8 / 2021.Sau thời gian này nếu thí sinh không nộp đủ các giấy tờ theo quy định, Nhà trường coi như thí sinh không có nguyện vọng học tại trường và sẽ xóa tên khỏi danh sách trúng tuyển.<br>
+*.Lệ phí xét tuyển thẳng: 25.000đ / 01 hồ sơ./. 
+    </p>
 }

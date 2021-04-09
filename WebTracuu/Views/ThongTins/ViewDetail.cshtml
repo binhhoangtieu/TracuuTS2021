@@ -12,26 +12,73 @@
         <th>STT </th>
         <th>Mã tổ hợp xét tuyển</th>
         <th>Tổ hợp thi</th>
-        <th>Chỉ tiêu</th>
-        <th>Hình thức xét tuyển</th>
+        <th>Chỉ tiêu <br>dự kiến</th>
+        <th>Phương thức xét tuyển</th>
     </tr>
     @{int index = 1;}
+    @{bool GhichuXTT2 = false;}
+    @{bool GhichuNK = false;}
     @foreach (var item in Model)
     {
         <tr>
             <td> @index</td>
             <td> @item.Ma_nganh </td>
-            @if  (item.To_hop_thi == null)
-                {
+            @if (item.To_hop_thi == null)
+            {
                 <td>  </td>
             }
             else
-            { 
-                <td> @Html.ActionLink(@item.To_hop_thi == null ? "_":item.To_hop_thi , "ViewToHopDetail", new {Tohop = item.To_hop_thi })</td>
+            {
+                <td> @Html.ActionLink(@item.To_hop_thi == null ? "_" : item.To_hop_thi, "ViewToHopDetail", new { Tohop = item.To_hop_thi })</td>
             }
-            <td> @item.Chi_Tieu</td>
-            <td> @item.Loai_XT</td>
+            <td  style="text-align:center;"> @item.Chi_Tieu</td>
+            <td>  @Html.ActionLink(@item.Loai_XT == null ? "_" : @item.Loai_XT, "ViewLoaiXTDetail", new { LoaiXT = @item.Loai_XT })</td>
         </tr>
+        if (@item.Loai_XT == "XTT2" || @item.Loai_XT == "XTT23")
+        {
+            GhichuXTT2 = true;
+        }
+        if (@item.Loai_XT == "THINK" || @item.Loai_XT == "NKPT")
+        {
+            GhichuNK = true;
+        }
+
         index++;
     }
 </table>
+<h3><b><i><u> Lưu ý: </u></i></b></h3>
+@if (GhichuXTT2)
+{
+    <p> - Các ngành sư phạm không tuyển những thí sinh bị dị hình, dị tật, nói ngọng, nói lắp. <br>
+        - Khi đăng ký xét tuyển thí sinh cần ghi rõ trong hồ sơ: Tên ngành đào tạo, tổ hợp xét tuyển và mã ngành tương ứng với tổ hợp xét tuyển đó.<br>
+        Ví dụ: Thí sinh đăng ký xét tuyển vào ngành SP Toán học(dạy Toán bằng tiếng Anh), tổ hợp Toán, Vật lí, Hóa học(A00)<br>
+        Cần ghi rõ: Tên ngành: 	SP Toán học(dạy Toán bằng tiếng Anh); Mã ngành: 7140209B<br>
+        Tổ hợp xét tuyển: Toán, Vật lí, Hóa học; Mã tổ hợp: A00<br>
+        - Các thí sinh trúng tuyển các ngành SP Tin học, SP Sinh học sau khi nhập học có thể đăng ký để nhà trường xét tuyển vào học các ngành SP Tin học(dạy Tin bằng tiếng Anh) hoặc SP Sinh học(dạy Sinh bằng tiếng Anh) tương ứng.<br>
+        - Thí sinh dự thi vào ngành Giáo dục Quốc phòng và An ninh phải có sức khỏe tốt, thí sinh mắc tật khúc xạ cận hoặc viễn thị không quá 3dp; không có dị tật bẩm sinh, hình xăm phản cảm.Nam cao từ 1,60m trở lên; nữ cao từ 1,55m trở lên.<br>
+        - Chương trình Giáo dục Tiểu học - SP Tiếng Anh đào tạo giáo viên dạy Tiểu học hoặc tiếng Anh ở trường Tiểu học.<br>
+        - Ngành Sư phạm Công nghệ: Đào tạo giáo viên công nghệ -giáo dục STEM cho trường phổ thông; giảng viên công nghệ kĩ thuật điện, điện tử cho các cơ sở giáo dục nghề nghiệp.<br>
+        - Ngành Giáo dục Đặc biệt đào tạo giáo viên dạy trẻ khuyết tật và hoà nhập.<br>
+        - Sinh viên học các ngành ngoài sư phạm và ngành Quản lý giáo dục phải đóng học phí.
+    </p>
+}
+@if (GhichuNK)
+{
+    <p><br>
+        <b>Tổ chức thi các môn năng khiếu: </b><br>
+        Trường tổ chức thi các môn năng khiếu đối với thí sinh có nguyện vọng xét tuyển vào các ngành SP Âm nhạc, SP Mỹ thuật, Giáo dục thể chất, Giáo dục Mầm non và Giáo dục Mầm non – SP Tiếng Anh:<br>
+        Hồ sơ đăng ký dự thi gồm:<br>
+        - 01 Phiếu đăng ký dự thi(theo MẪU NK1 hoặc MẪU NK2 – mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
+        - 02 ảnh 4x6(ghi rõ họ tên, ngày sinh, ngành đăng ký dự thi sau ảnh).<br>
+        - 02 Phong bì có dán tem và ghi sẵn địa chỉ người nhận(để gửi giấy xác nhận điểm thi các môn năng khiếu).<br>
+        -Biên lai nộp tiền(bản photo) hoặc xác nhận chuyển tiền.
+        Lệ phí dự thi: 300.000đ / 01 hồ sơ <br>
+        Thời gian nộp hồ sơ đăng ký dự thi: Từ ngày 06 / 05 / 2021 đến hết ngày 05 / 07 / 2021. <br>
+        + Hình thức nộp hồ hơ: Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P 211 - Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội.<br>
+        + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
+        Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội<br>
+        Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
+        Nội dung nộp tiền: NK2021 - <i>Họ và tên thí sinh - Số điện thoại của thí sinh</i><br>
+        Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.<br>
+    </p>
+}
