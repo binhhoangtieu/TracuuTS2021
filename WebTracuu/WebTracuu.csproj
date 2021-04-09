@@ -154,6 +154,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Nganh_Chitieu.cs" />
     <Compile Include="Models\ThongTin.cs">
       <DependentUpon>ModelContext.tt</DependentUpon>
     </Compile>

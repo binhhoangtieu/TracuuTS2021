@@ -20,11 +20,22 @@ namespace WebTracuu.Controllers
         public ActionResult Index(string KeyWord)
         {
             var list = db.ThongTins.ToList();
+
             if (KeyWord != null && KeyWord != "")
             {
                 list = list.Where(m => m.Ma_nganh != null).Where(m => m.Ma_nganh.Contains(KeyWord)).ToList();
             }
-            return View(list);
+
+            var listNganh = from b in list
+                           group b by b.Nganh into g
+                           let ChiTieu = g.Sum(w => w.Chi_Tieu)
+                           select new Nganh_Chitieu
+                           {
+                               Nganh = g.Key,
+                               ChiTieu = ChiTieu.Value
+                           };
+
+            return View(listNganh);
 
         }
         public ActionResult ToHopList(string KeyWord)
