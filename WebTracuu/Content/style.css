@@ -168,23 +168,24 @@ img {
 	display: inline;
 }
 
-#templatemo_menu ul li a{
-	float: left;
-	display: block;
-	width: 100px;
-	padding: 5px 0;
-	background: url(images/templatemo_menu_divider.jpg) right repeat-y;
-	text-align: center;
-	font-size: 14px;
-	text-decoration: none;
-	color: #919191;	
-	font-weight: normal;
-	outline: none;
-}
+	#templatemo_menu ul li a {
+		float: left;
+		display: block;
+		width: 110px;
+		padding: 5px 0;
+		background: url(images/templatemo_menu_divider.jpg) right repeat-y;
+		text-align: center;
+		font-size: 14px;
+		text-decoration: none;
+		color: #919191;
+		font-weight: normal;
+		outline: none;
+	}
 
-#templatemo_menu li a:hover, #templatemo_menu li .current{
-	color: #bbd142;
-}
+	#templatemo_menu li a:hover, #templatemo_menu li .current {
+		width: 110px;
+		color: #bbd142;
+	}
 
 #templatemo_menu li .last {
 	background: none;
