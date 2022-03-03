@@ -1,0 +1,113 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>HNUE - Tra cứu tuyển sinh 2021</title>
+    <meta name="keywords" content="HNUE" />
+    <meta name="description" content="Tuyển sinh 2021" />
+
+    <link href="~/Assets/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+    </script>
+
+    <link rel="stylesheet" href="~/Assets/css/nivo-slider.css" type="text/css" media="screen" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Assets/script/jquery.nivo.slider.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+$(window).load(function() {
+	$('#slider').nivoSlider({
+		effect:'random',
+		slices:10,
+		animSpeed:800,
+		pauseTime:2000,
+		startSlide:1, //Set starting Slide (0 index)
+		directionNav:false,
+		directionNavHide:false, //Only show on hover
+		controlNav:false, //1,2,3...
+		controlNavThumbs:false, //Use thumbnails for Control Nav
+		pauseOnHover:true, //Stop animation while hovering
+		manualAdvance:false, //Force manual transitions
+		captionOpacity:0.6, //Universal caption opacity
+		beforeChange: function(){},
+		afterChange: function(){},
+		slideshowEnd: function(){} //Triggers after all slides have been shown
+	});
+});
+    </script>
+
+</head>
+<body class="homepage">
+
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header" )=)>
+
+            @*<div id="site_title"><h2><a href="#">Tuyển sinh 2021</a> <span></span><span></span></h2></div>*@
+
+            <div id="search_box">
+                <form action="/Thongtins/SearchPost" method="get">
+                    <input type="text" value="Tuyển sinh HNUE" name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return SubmitOnEnter(this, event);" />
+                    <input type="submit" name="" value="" id="searchbutton" title="" />
+                    </form>
+            </div>
+
+            <div class="cleaner"></div>
+        </div>
+
+        <div id="templatemo_menu">
+            <ul>
+                <li><a href="/Thongtins/Thongtinchung">Thông tin chung</a></li>
+                <li><a href="/Thongtins/Index">Ngành tuyển sinh</a></li>
+                <li><a href="/Thongtins/TohopList">Tổ hợp tuyển sinh</a></li>
+                <li><a href="/Thongtins/LoaiXTList">Phương thức xét tuyển</a></li>
+                <li><a href="/Thongtins/Maudangky">Mẫu đăng ký</a></li>
+            </ul>
+            <div class="cleaner"></div>
+        </div> <!-- end of templatemo_menu -->
+
+        <div id="templatemo_middle">
+
+            <div id="intro">
+                <h2>Trường Đại học Sư phạm Hà Nội</h2>
+                <p>
+                    Mã trường: SPH <br />
+                    Địa chỉ: Số 136 Xuân Thuỷ, Cầu Giấy, Hà Nội.<br />
+                    Điện thoại: 0867.876.053; 0867.74.55.23<br />
+                    Email: <a href="mailto:tuvantuyensinh@hnue.edu.vn">tuvantuyensinh@hnue.edu.vn</a> <br />
+                    Website: <a href="http://hnue.edu.vn/">http://hnue.edu.vn/</a>
+                </p>
+                @*<a class="learn_more" href="http://tuyensinh.hnue.edu.vn/"></a>*@
+            </div>
+
+            <div id="slider">
+                <a href="#"><img src="~/Assets/images/slideshow/01.jpg" /></a>
+                <a href="#"><img src="~/Assets/images/slideshow/02.jpg" /></a>
+                <a href="#"><img src="~/Assets/images/slideshow/03.jpg" /></a>
+                <a href="#"><img src="~/Assets/images/slideshow/04.jpg" /></a>
+                <a href="#"><img src="~/Assets/images/slideshow/05.jpg" /></a>
+                @*<a href="#"><img src="~/Assets/images/slideshow/05.jpg" alt="" title="Ảnh 5.. " /></a>*@
+            </div>
+        </div>
+
+        <div id="templatemo_main">
+            @RenderBody()
+            @*<div class="cleaner"></div>*@
+        </div> <!-- end of main -->
+
+    </div> <!-- end of wrapper -->
+
+    <div id="templatemo_footer_wrapper">
+        <div id="templatemo_footer">
+
+            Copyright © 2021 <a href="http://daotao.hnue.edu.vn">Trường Đại học Sư phạm Hà Nội@Phòng Đào tạo@htbinh</a>
+
+        </div> <!-- end of footer wrapper -->
+    </div> <!-- end of footer -->
+</body>
+</html>

@@ -2,30 +2,30 @@
 
 @{
     ViewBag.Title = "ViewDetail";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-@if (ViewBag.MaXT == "THPT")
+@if (ViewBag.MaXT == "PT1")
 {
     <h3>Các ngành xét tuyển bằng điểm thi TN THPT</h3>
 }
-@if (ViewBag.MaXT == "XTT2")
+@if (ViewBag.MaXT == "PT2")
 {
     <h3>Các ngành xét tuyển thẳng 2</h3>
 }
-@if (ViewBag.MaXT == "NKPT")
+@if (ViewBag.MaXT == "PT4.2")
 {
     <h3>Các ngành xét tuyển kết hợp điểm thi năng khiếu và điểm thi TN THPT</h3>
 }
-@if (ViewBag.MaXT == "THINK")
+@if (ViewBag.MaXT == "PT4.1")
 {
     <h3>Các ngành xét tuyển bằng điểm thi năng khiếu</h3>
 }
-@if (ViewBag.MaXT == "XTT23")
+@if (ViewBag.MaXT == "PT2-PT3")
 {
     <h3>Các ngành xét tuyển thẳng 2 và 3</h3>
 }
-<table border="1">
-    @if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
+<table style="font-size:14px" border="1">
+    @if (ViewBag.MaXT == "PT2" || ViewBag.MaXT == "PT2-PT3")
     {
         int index = 1;
         <tr>
@@ -39,100 +39,108 @@
 
         foreach (var item in Model)
         {
-<tr>
-    <td>@index</td>
-    <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
-    <td>@item.Tham_Gia_Doi_Tuyen</td>
-    <td>
-        @item.To_Hop_XTT2
-    </td>
-    <td style="text-align:center;">@item.Chi_Tieu</td>
-    <td>@item.Ghi_Chu</td>
-</tr>
+            <tr>
+                <td style="text-align:right;">@index</td>
+                <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
+                <td>@item.Tham_Gia_Doi_Tuyen</td>
+                <td>
+                    @item.To_Hop_XTT2
+                </td>
+                <td style="text-align:center;">@item.Chi_Tieu</td>
+                <td>@item.Ghi_Chu</td>
+            </tr>
             index++;
         }
     }
     else
     {
         int index = 1;
-<tr>
-    <th>STT </th>
-    <th>Mã ngành TS</th>
-    <th>Ngành xét tuyển</th>
-    <th>Tổ hợp thi</th>
-    <th>Chỉ tiêu dự kiến</th>
-</tr>
+        <tr>
+            <th>STT </th>
+            <th>Mã ngành TS</th>
+            <th>Ngành xét tuyển</th>
+            <th>Tổ hợp thi</th>
+            <th>Chỉ tiêu dự kiến</th>
+        </tr>
 
         foreach (var item in Model)
         {
-<tr>
-    <td>@index</td>
-    <td>@item.Ma_nganh </td>
-    <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
-    <td>
-        @Html.ActionLink(@item.To_hop_thi == null ? "_" : @item.To_hop_thi, "ViewToHopDetail", new { Tohop = @item.To_hop_thi })
-    </td>
+            <tr>
+                <td style="text-align:right;">@index</td>
+                <td>@item.Ma_nganh </td>
+                <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
+                <td>
+                    @Html.ActionLink(@item.To_hop_thi == null ? "_" : @item.To_hop_thi, "ViewToHopDetail", new { Tohop = @item.To_hop_thi })
+                </td>
 
-<td style="text-align:center;"> @item.Chi_Tieu</td>
-</tr>
+                <td style="text-align:center;"> @item.Chi_Tieu</td>
+            </tr>
             index++;
         }
     }
 </table>
 <br>
 <h4><b><u>Lưu ý:</u></b></h4>
-@if (ViewBag.MaXT == "XTT2" || ViewBag.MaXT == "XTT23")
-{
-    <p>
-        <b>Quy định về hồ sơ đăng ký xét tuyển:</b><br>
-        -	Phiếu đăng ký xét tuyển (theo mẫu quy định của trường- mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
-        -	Bản sao công chứng học bạ THPT.<br>
-        -	Bản sao công chứng giấy chứng nhận đạt giải học sinh giỏi tỉnh/thành phố (nếu có).<br>
-        -	Bản sao công chứng chứng chỉ ngoại ngữ hoặc Tin học: đối với các ngành xét tuyển sử dụng chứng chỉ Quốc tế<br>
-        -	Biên lai nộp tiền (bản photo) hoặc xác nhận chuyển tiền.<br>
-        Chú ý: Thí sinh chỉ được đăng ký xét tuyển thẳng vào 1 ngành.<br>
-        <b>Hình thức đăng ký xét tuyển:</b><br>
-        + Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P. 211-Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội<br>
-        + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
-        Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội <br>
-        Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
-        Nội dung nộp tiền: <b>XTT2021 - Họ và tên thí sinh - Mã ngành - Số điện thoại của thí sinh</b><br>
-        <i>Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.</i><br>
-        <b>Thời gian nộp hồ sơ và công bố kết quả xét tuyển thẳng:</b><br>
-        -Nộp hồ sơ từ ngày 21 / 6 / 2021 đến hết ngày 05 / 7 / 2021(trong giờ hành chính, trừ ngày thứ 7, Chủ nhật và ngày lễ) <br>
-        - Công bố kết quả: ngày 20 / 07 / 2021.(Công bố trên website hnue.edu.vn) <br>
-        Nộp các giấy tờ xác nhận thí sinh sẽ học tại trường: từ ngày 04 / 8 / 2021 đến hết ngày 09 / 8 / 2021.Sau thời gian này nếu thí sinh không nộp đủ các giấy tờ theo quy định, Nhà trường coi như thí sinh không có nguyện vọng học tại trường và sẽ xóa tên khỏi danh sách trúng tuyển.<br>
-        *.Lệ phí xét tuyển thẳng: 25.000đ / 01 hồ sơ./.
-    </p>
-}
-@if (ViewBag.MaXT == "THINK" || ViewBag.MaXT == "NKPT")
-{
-    <p>
-        - Các ngành sư phạm không tuyển những thí sinh bị dị hình, dị tật, nói ngọng, nói lắp. <br>
-        - Khi đăng ký xét tuyển thí sinh cần ghi rõ trong hồ sơ: Tên ngành đào tạo, tổ hợp xét tuyển và mã ngành tương ứng với tổ hợp xét tuyển đó.<br>
-        Ví dụ: Thí sinh đăng ký xét tuyển vào ngành SP Toán học(dạy Toán bằng tiếng Anh), tổ hợp Toán, Vật lí, Hóa học(A00)<br>
-        Cần ghi rõ: Tên ngành: 	SP Toán học(dạy Toán bằng tiếng Anh); Mã ngành: 7140209B<br>
-        Tổ hợp xét tuyển: Toán, Vật lí, Hóa học; Mã tổ hợp: A00<br>
-        - Các thí sinh trúng tuyển các ngành SP Tin học, SP Sinh học sau khi nhập học có thể đăng ký để nhà trường xét tuyển vào học các ngành SP Tin học(dạy Tin bằng tiếng Anh) hoặc SP Sinh học(dạy Sinh bằng tiếng Anh) tương ứng.<br>
-        - Thí sinh dự thi vào ngành Giáo dục Quốc phòng và An ninh phải có sức khỏe tốt, thí sinh mắc tật khúc xạ cận hoặc viễn thị không quá 3dp; không có dị tật bẩm sinh, hình xăm phản cảm.Nam cao từ 1,60m trở lên; nữ cao từ 1,55m trở lên.<br>
-        - Chương trình Giáo dục Tiểu học - SP Tiếng Anh đào tạo giáo viên dạy Tiểu học hoặc tiếng Anh ở trường Tiểu học.<br>
-        - Ngành Sư phạm Công nghệ: Đào tạo giáo viên công nghệ -giáo dục STEM cho trường phổ thông; giảng viên công nghệ kĩ thuật điện, điện tử cho các cơ sở giáo dục nghề nghiệp.<br>
-        - Ngành Giáo dục Đặc biệt đào tạo giáo viên dạy trẻ khuyết tật và hoà nhập.<br>
-        - Sinh viên học các ngành ngoài sư phạm và ngành Quản lý giáo dục phải đóng học phí.<br><br>
-        <b><u>Tổ chức thi các môn năng khiếu: </u></b><br>
-        Trường tổ chức thi các môn năng khiếu đối với thí sinh có nguyện vọng xét tuyển vào các ngành SP Âm nhạc, SP Mỹ thuật, Giáo dục thể chất, Giáo dục Mầm non và Giáo dục Mầm non – SP Tiếng Anh:<br>
-        Hồ sơ đăng ký dự thi gồm:<br>
-        - 01 Phiếu đăng ký dự thi(theo MẪU NK1 hoặc MẪU NK2 – mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
-        - 02 ảnh 4x6(ghi rõ họ tên, ngày sinh, ngành đăng ký dự thi sau ảnh).<br>
-        - 02 Phong bì có dán tem và ghi sẵn địa chỉ người nhận(để gửi giấy xác nhận điểm thi các môn năng khiếu).<br>
-        -Biên lai nộp tiền(bản photo) hoặc xác nhận chuyển tiền.
-        Lệ phí dự thi: 300.000đ / 01 hồ sơ <br>
-        Thời gian nộp hồ sơ đăng ký dự thi: Từ ngày 06 / 05 / 2021 đến hết ngày 05 / 07 / 2021. <br>
-        + Hình thức nộp hồ hơ: Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P 211 - Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội.<br>
-        + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
-        Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội<br>
-        Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
-        Nội dung nộp tiền: NK2021 - <i>Họ và tên thí sinh - Số điện thoại của thí sinh</i><br>
-        Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.<br>
-    </p>
-}
+<h5>
+    @if (ViewBag.MaXT == "PT2" || ViewBag.MaXT == "PT2-PT3")
+    {
+        <p>
+            <b>Quy định về hồ sơ đăng ký xét tuyển:</b><br>
+            -	Phiếu đăng ký xét tuyển (theo mẫu quy định của trường- mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
+            -	Bản sao công chứng học bạ THPT.<br>
+            -	Bản sao công chứng giấy chứng nhận đạt giải học sinh giỏi tỉnh/thành phố (nếu có).<br>
+            -	Bản sao công chứng chứng chỉ ngoại ngữ hoặc Tin học: đối với các ngành xét tuyển sử dụng chứng chỉ Quốc tế<br>
+            -	Biên lai nộp tiền (bản photo) hoặc xác nhận chuyển tiền.<br>
+            Chú ý: Thí sinh chỉ được đăng ký xét tuyển thẳng vào 1 ngành.<br>
+            <b>Hình thức đăng ký xét tuyển:</b><br>
+            + Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P. 211-Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội<br>
+            + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
+            Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội <br>
+            Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
+            Nội dung nộp tiền: <b>XTT2021 - Họ và tên thí sinh - Mã ngành - Số điện thoại của thí sinh</b><br>
+            <i>Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.</i><br>
+            <b>Thời gian nộp hồ sơ và công bố kết quả xét tuyển thẳng:</b><br>
+            -Nộp hồ sơ từ ngày 21/6/2021 đến hết ngày 05/7/2021(trong giờ hành chính, trừ ngày thứ 7, Chủ nhật và ngày lễ) <br>
+            - Công bố kết quả: ngày 20/07/2021.(Công bố trên website hnue.edu.vn) <br>
+            Nộp các giấy tờ xác nhận thí sinh sẽ học tại trường: từ ngày 04/8/ 2021 đến hết ngày 09/8/2021. Sau thời gian này nếu thí sinh không nộp đủ các giấy tờ theo quy định, Nhà trường coi như thí sinh không có nguyện vọng học tại trường và sẽ xóa tên khỏi danh sách trúng tuyển.<br>
+            <i>*Lệ phí xét tuyển thẳng: 25.000đ/01 hồ sơ./.</i>
+        </p>
+    }
+    @if (ViewBag.MaXT == "PT4.1" || ViewBag.MaXT == "PT4.2")
+    {
+<p>
+    - Các ngành sư phạm không tuyển những thí sinh bị dị hình, dị tật, nói ngọng, nói lắp. <br>
+    - Khi đăng ký xét tuyển thí sinh cần ghi rõ trong hồ sơ: Tên ngành đào tạo, tổ hợp xét tuyển và mã ngành tương ứng với tổ hợp xét tuyển đó.<br>
+    Ví dụ: Thí sinh đăng ký xét tuyển vào ngành SP Toán học(dạy Toán bằng tiếng Anh), tổ hợp Toán, Vật lí, Hóa học(A00)<br>
+    Cần ghi rõ: Tên ngành: 	SP Toán học(dạy Toán bằng tiếng Anh); Mã ngành: 7140209B<br>
+    Tổ hợp xét tuyển: Toán, Vật lí, Hóa học; Mã tổ hợp: A00<br>
+    - Các thí sinh trúng tuyển các ngành SP Tin học, SP Sinh học sau khi nhập học có thể đăng ký để nhà trường xét tuyển vào học các ngành SP Tin học(dạy Tin bằng tiếng Anh) hoặc SP Sinh học(dạy Sinh bằng tiếng Anh) tương ứng.<br>
+    - Thí sinh dự thi vào ngành Giáo dục Quốc phòng và An ninh phải có sức khỏe tốt, thí sinh mắc tật khúc xạ cận hoặc viễn thị không quá 3dp; không có dị tật bẩm sinh, hình xăm phản cảm.Nam cao từ 1,60m trở lên; nữ cao từ 1,55m trở lên.<br>
+    - Chương trình Giáo dục Tiểu học - SP Tiếng Anh đào tạo giáo viên dạy Tiểu học hoặc tiếng Anh ở trường Tiểu học.<br>
+    - Ngành Sư phạm Công nghệ: Đào tạo giáo viên công nghệ - giáo dục STEM cho trường phổ thông; giảng viên công nghệ kĩ thuật điện, điện tử cho các cơ sở giáo dục nghề nghiệp.<br>
+    - Ngành Giáo dục Đặc biệt đào tạo giáo viên dạy trẻ khuyết tật và hoà nhập.<br>
+    - Sinh viên học các ngành ngoài sư phạm và ngành Quản lý giáo dục phải đóng học phí.<br><br>
+    <b><u>Tổ chức thi các môn năng khiếu: </u></b><br>
+    Trường tổ chức thi các môn năng khiếu đối với thí sinh có nguyện vọng xét tuyển vào các ngành SP Âm nhạc, SP Mỹ thuật, Giáo dục thể chất, Giáo dục Mầm non và Giáo dục Mầm non – SP Tiếng Anh:<br>
+    Hồ sơ đăng ký dự thi gồm:<br>
+    - 01 Phiếu đăng ký dự thi(theo MẪU NK1 hoặc MẪU NK2 – mục Biểu mẫu trên trang tuyensinh.hnue.edu.vn)<br>
+    - 02 ảnh 4x6(ghi rõ họ tên, ngày sinh, ngành đăng ký dự thi sau ảnh).<br>
+    - 02 Phong bì có dán tem và ghi sẵn địa chỉ người nhận(để gửi giấy xác nhận điểm thi các môn năng khiếu).<br>
+    -Biên lai nộp tiền(bản photo) hoặc xác nhận chuyển tiền.
+    Lệ phí dự thi: 300.000đ/01 hồ sơ <br>
+    Thời gian nộp hồ sơ đăng ký dự thi: Từ ngày 06/05/2021 đến hết ngày 05/07/2021. <br>
+    + Hình thức nộp hồ hơ: Hồ sơ gửi chuyển phát nhanh qua đường bưu điện về địa chỉ: P 211 - Phòng Đào Tạo, Nhà Hành chính Hiệu Bộ, Trường Đại học Sư Phạm Hà Nội-136 Xuân Thủy, Cầu Giấy, TP Hà Nội.<br>
+    + Lệ phí: chuyển tiền vào tài khoản của trường với thông tin sau:<br>
+    Tên chủ tài khoản: Trường Đại học Sư Phạm Hà Nội<br>
+    Số tài khoản: 21510000437126 Tại Ngân Hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Cầu Giấy.<br>
+    Nội dung nộp tiền: NK2021 - <i>Họ và tên thí sinh - Số điện thoại của thí sinh</i><br>
+    Lưu ý: Sau khi nộp lệ phí, thí sinh phải giữ lại biên lai nộp tiền hoặc xác nhận chuyển tiền để Nhà trường đối chiếu khi cần thiết.
+    <br><br>
+    <b>Thời gian và địa điểm thi:</b><br>
+    - 9h00 sáng ngày 14/07/2021: Tập trung thí sinh, phổ biến qui chế thi tại Hội trường 11-10, trường Đại học Sư Phạm Hà Nội -136 Xuân Thủy, Cầu Giấy, Hà Nội.<br>
+    - Từ ngày 15/07/2021 đến 17/07/2021: Thi các môn năng khiếu (thời gian và địa điểm cụ thể sẽ thông báo trên trang tuyển sinh của Trường Đại học Sư phạm Hà Nội tại địa chỉ: http://tuyensinh.hnue.edu.vn)<br>
+    <i><u>Lưu ý:</u></i><br>
+    <i>+ Nhà Trường không gửi giấy báo dự thi đến từng thí sinh, vì vậy thí sinh phải xem lịch thi cụ thể trên trang tuyển sinh của trường: <a href="http://tuyensinh.hnue.edu.vn"> http://tuyensinh.hnue.edu.vn </a> vào  ngày 12/07/2021. Thí sinh phải có trách nhiệm thực hiện đúng thời gian và lịch thi theo qui định của nhà trường. Thí sinh vi phạm thời gian thi theo qui định sẽ không được dự thi và  phải hoàn toàn tự chịu trách nhiệm.</i>
+</p>
+    }
+</h5>

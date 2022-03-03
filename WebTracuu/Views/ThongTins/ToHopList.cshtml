@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<WebTracuu.Models.ThongTin>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh sách theo tổ hợp xét tuyển";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-
-<table border="1">
+<h3>@ViewBag.Title</h3>
+<table style="font-size:14px" border="1">
 
     <tr>
         <th>STT </th>
-        <th>Ngành </th>
+        <th>Tổ hợp xét tuyển</th>
     </tr>
     @{int index = 1;}
     @foreach (var item in Model.Select(c => c.To_hop_thi).Distinct().ToList())
     {
         <tr>
-            <td>  @index</td>        
+            <td style="text-align:right;">  @index</td>        
             <td> @Html.ActionLink(@item==null?"_":item, "ViewToHopDetail", new { Tohop = @item }) </td>
         </tr>
         index++;

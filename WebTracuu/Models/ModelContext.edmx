@@ -19,12 +19,8 @@
           <Property Name="Ghi_Chu" Type="nvarchar" MaxLength="255" />
           <Property Name="Loai_XT" Type="nvarchar" MaxLength="255" />
           <Property Name="Ngoai_SP" Type="int" />
+          <Property Name="Dean_TS" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'tracuu.dbo.Nganh' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Nganh">
-          <Property Name="Nganh" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityContainer Name="tracuuModelStoreContainer">
           <EntitySet Name="ThongTin" EntityType="Self.ThongTin" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -46,6 +42,7 @@ warning 6013: The table/view 'tracuu.dbo.Nganh' does not have a primary key defi
           <Property Name="Ghi_Chu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Loai_XT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Ngoai_SP" Type="Int32" />
+          <Property Name="Dean_TS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="tracuuEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ThongTins" EntityType="Self.ThongTin" />
@@ -59,6 +56,7 @@ warning 6013: The table/view 'tracuu.dbo.Nganh' does not have a primary key defi
           <EntitySetMapping Name="ThongTins">
             <EntityTypeMapping TypeName="tracuuModel.ThongTin">
               <MappingFragment StoreEntitySet="ThongTin">
+                <ScalarProperty Name="Dean_TS" ColumnName="Dean_TS" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nganh" ColumnName="Nganh" />
                 <ScalarProperty Name="To_hop_thi" ColumnName="To_hop_thi" />

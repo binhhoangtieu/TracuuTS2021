@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<WebTracuu.Models.Nganh_Chitieu>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Các ngành tuyển sinh ĐHSPHN năm 2021";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-
-
+<h3>@ViewBag.Title</h3>
 <p>
     @using (Html.BeginForm())
     {
@@ -24,25 +23,39 @@
             </div>*@
     }
 </p>
-<table border = "1">
+<table style="font-size:14px" border="1">
 
     <tr>
         <th>STT </th>
         <th>Ngành </th>
-        <th>Chỉ tiêu </th>
+        <th>Chỉ tiêu dự kiến</th>
         <th>Loại hình đào tạo </th>
+        <th>Poster giới thiệu</th>
     </tr>
     @{int index = 1;}
     @foreach (var item in Model)
     {
-<tr>
-    <td>  @index</td>
-    <td> @Html.ActionLink(@item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
-    <td> @item.ChiTieu </td>
-    <td style="text-align:center;"> @(@item.Ngoai_SP==0? "Sư phạm":"Ngoài sư phạm") </td>
+        <tr>
+            <td style="text-align:right;">  @index</td>
+            <td> @Html.ActionLink(@item.Nganh, "ViewDetail", new { nganh = @item.Nganh }) </td>
+            <td style="text-align:center;"> @item.ChiTieu </td>
+            <td style="text-align:center;"> @(@item.Ngoai_SP == 0 ? "Sư phạm" : "Ngoài sư phạm") </td>
 
-</tr>
+            @if (item.Dean_TS == "")
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    @(@Html.ActionLink((@item.Dean_TS == "" ? "" : "Giới thiệu"), "ViewImage", new { sNganh = @item.Nganh, sUrl = @item.Dean_TS }))
+                </td>
+            }
+
+        </tr>
         index++;
     }
 
 </table>
+<br>
+<h4><b><i>Lưu ý: Trường ĐHSPHN chỉ tuyển những thí sinh đã tốt nghiệp THPT và có hạnh kiểm tất cả các học kỳ ở bậc THPT đạt loại khá trở lên.</b></i></h4>

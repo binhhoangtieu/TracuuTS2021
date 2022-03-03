@@ -24,5 +24,6 @@ namespace WebTracuu.Models
         public string Ghi_Chu { get; set; }
         public string Loai_XT { get; set; }
         public Nullable<int> Ngoai_SP { get; set; }
+        public string Dean_TS { get; set; }
     }
 }

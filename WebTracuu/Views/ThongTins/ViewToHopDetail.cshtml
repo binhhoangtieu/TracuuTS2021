@@ -1,27 +1,27 @@
 ﻿@model IEnumerable<WebTracuu.Models.ThongTin>
 
 @{
-    ViewBag.Title = "ViewDetail";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Các ngành tuyển sinh theo tổ hợp";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-
-<table border="1">
+<h3>@ViewBag.Title</h3>
+<table style="font-size:14px" border="1">
     <tr>
         <th>STT </th>
         <th>Mã ngành TS</th>
         <th>Ngành xét tuyển</th>
         <th>Tổ hợp thi</th>
-        <th>Chỉ tiêu</th>
+        <th>Chỉ tiêu dự kiến</th>
     </tr>
     @{int index = 1;}
     @foreach (var item in Model)
     {
         <tr>
-            <td>  @index</td>
+            <td style="text-align:right;">  @index</td>
             <td> @item.Ma_nganh </td>
             <td>@Html.ActionLink(@item.Nganh == null ? "_" : @item.Nganh, "ViewDetail", new { nganh = @item.Nganh })</td>
             <td>@item.To_hop_thi</td>
-            <td  style="text-align:center;">@item.Chi_Tieu</td>
+            <td style="text-align:center;">@item.Chi_Tieu</td>
         </tr>
         index++;
     }

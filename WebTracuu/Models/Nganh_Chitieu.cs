@@ -10,5 +10,6 @@ namespace WebTracuu.Models
         public string Nganh { get; set; }
         public int ChiTieu { get; set; }
         public int Ngoai_SP { get; set; }
+        public string Dean_TS { get; internal set; }
     }
 }

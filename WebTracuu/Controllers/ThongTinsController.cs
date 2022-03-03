@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -31,12 +32,14 @@ namespace WebTracuu.Controllers
                            {
                                b.Nganh,
                                b.Ngoai_SP,
+                               b.Dean_TS,
                            } into g
                            let ChiTieu = g.Sum(w => w.Chi_Tieu)
                            select new Nganh_Chitieu
                            {
                                Nganh = g.Key.Nganh,
                                Ngoai_SP = (int)g.Key.Ngoai_SP,
+                               Dean_TS = g.Key.Dean_TS,
                                ChiTieu = ChiTieu.Value
                            };
 
@@ -45,7 +48,7 @@ namespace WebTracuu.Controllers
         }
         public ActionResult ToHopList(string KeyWord)
         {
-            var list = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).ToList();
+            var list = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("PT1")|| m.Loai_XT.Equals("PT4.2")).ToList();
             if (KeyWord != null && KeyWord != "")
             {
                 list = list.Where(m => m.To_hop_thi.Contains(KeyWord)).ToList();
@@ -168,6 +171,27 @@ namespace WebTracuu.Controllers
             return View(objs);
         }
 
+        public ActionResult ViewImage(string sNganh, string sUrl)
+        {
+            string extension;
+            ViewBag.Nganh = sNganh;
+            ViewBag.Dean_TS = sUrl;
+            extension = Path.GetExtension(sUrl);
+            if (extension == ".jpg" || extension == ".png" )
+            {
+                return View("ViewImage");
+            }
+            else if (extension == ".pdf")
+            {
+                return File(sUrl, "application/pdf");
+            }
+            else
+            {
+                throw new HttpException(403, "Forbidden");
+            }  
+            
+        }
+
         public ActionResult Thongtinchung()
         {
             return View("Thongtinchung");
@@ -177,9 +201,15 @@ namespace WebTracuu.Controllers
         {
             return View("Maudangky");
         }
+
+        public ActionResult SearchPost()
+        {
+            return View("SearchPost");
+        }
+
         public ActionResult ViewToHopDetail(string Tohop)
         {
-            List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("THPT")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
+            List<ThongTin> objs = db.ThongTins.Where(m => m.To_hop_thi != null).Where(m => m.Loai_XT.Equals("PT1")|| m.Loai_XT.Equals("PT4.2")).Where(m => m.To_hop_thi.Equals(Tohop)).ToList();
             return View(objs);
         }
         public ActionResult ViewLoaiXTDetail(string LoaiXT)
